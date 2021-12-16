@@ -131,6 +131,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Login.ascx" />
+    <Content Include="WebFormMain.aspx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -221,6 +222,13 @@
     </Compile>
     <Compile Include="Login.ascx.designer.cs">
       <DependentUpon>Login.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="WebFormMain.aspx.cs">
+      <DependentUpon>WebFormMain.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebFormMain.aspx.designer.cs">
+      <DependentUpon>WebFormMain.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup />

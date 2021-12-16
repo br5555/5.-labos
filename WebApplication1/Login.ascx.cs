@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -18,7 +20,7 @@ namespace WebApplication1
 
         private bool CheckUsernameAndPassword()
         {
-            XElement korisnici = XElement.Load(@"./App_Data/korisnici.xml");
+            XElement korisnici = XElement.Load(@"D:\csharp\5. Labos\WebApplication1\WebApplication1\App_Data\korisnici.xml");
             var users = korisnici.Elements().Select(el => new
                 { username = (string)el.Element("korisnickoIme"), password = (string)el.Element("lozinka") });
 
@@ -32,22 +34,24 @@ namespace WebApplication1
         {
             using (DataSet ds = new DataSet())
             {
-                ds.ReadXml(@"./App_Data/popisKnjiga.xml")
+                ds.ReadXml(@"D:\csharp\5. Labos\WebApplication1\WebApplication1\App_Data\popisKnjiga.xml");
+                this.GridViewData.DataSource = ds;
+                this.GridViewData.DataBind();
             }
-
         }
 
         protected void Login_Click(object sender, EventArgs e)
         {
             if (CheckUsernameAndPassword())
             {
+                this.PanelLogin.Visible = false;
                 this.PanelDisplay.Visible = true;
+                DisplayBooks();
             }
             else
             {
-                this.PanelLogin.Visible = false;
                 this.PanelError.Visible = true;
-                DisplayBooks();
+                
             }
 
         }
